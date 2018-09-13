@@ -22,12 +22,12 @@ public class BerlinUhrTest {
 
     @Test
     public void minutes() {
-        assertArrayEquals("one minute", BerlinUhr.fromDigital("00:01:01"), new int[]{0,0,1,0,0});
-        assertArrayEquals("four minutes", BerlinUhr.fromDigital("00:04:01"), new int[]{0,0,4,0,0});
-        assertArrayEquals("five minutes", BerlinUhr.fromDigital("00:05:01"), new int[]{0,1,0,0,0});
-        assertArrayEquals("six minutes", BerlinUhr.fromDigital("00:06:01"), new int[]{0,1,1,0,0});
-        assertArrayEquals("eleven minutes", BerlinUhr.fromDigital("00:11:01"), new int[]{0,2,1,0,0});
-        assertArrayEquals("fifty-nine minutes", BerlinUhr.fromDigital("00:59:01"), new int[]{0,11,4,0,0});
+        assertArrayEquals("one minute", BerlinUhr.fromDigital("00:01:01"), new int[]{0,0,0,0,1});
+        assertArrayEquals("four minutes", BerlinUhr.fromDigital("00:04:01"), new int[]{0,0,0,0,4});
+        assertArrayEquals("five minutes", BerlinUhr.fromDigital("00:05:01"), new int[]{0,0,0,1,0});
+        assertArrayEquals("six minutes", BerlinUhr.fromDigital("00:06:01"), new int[]{0,0,0,1,1});
+        assertArrayEquals("eleven minutes", BerlinUhr.fromDigital("00:11:01"), new int[]{0,0,0,2,1});
+        assertArrayEquals("fifty-nine minutes", BerlinUhr.fromDigital("00:59:01"), new int[]{0,0,0,11,4});
     }
 
     @Ignore

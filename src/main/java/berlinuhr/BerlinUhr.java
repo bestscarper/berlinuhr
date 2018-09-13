@@ -23,6 +23,6 @@ public class BerlinUhr {
         int minorMinutesLight = (minute % 5);
         int majorMinutesLight = (minute / 5);
 
-        return new int[]{secondsLight,majorMinutesLight,minorMinutesLight,0,0};
+        return new int[]{secondsLight,0,0,majorMinutesLight,minorMinutesLight};
     }
 }
