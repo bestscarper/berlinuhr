@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
-public class BerlinUhr {
+public class Parser {
 
     /**
      * Return a representation of the Berlinuhr clock, as an array of ints

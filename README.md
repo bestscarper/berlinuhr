@@ -17,9 +17,19 @@ which represents the number of lights on each row from top to bottom.
 
 e.g. 10:31:00 => [1,2,0,6,1]
 
-# UX issues
-The implementation is deliberately simple as the requirements are vague about the UX
-but I assume a graphical depiction of the lights is beyond the scope of a simple coding test.
+# UX
 
-The output of the main function could be fed into a UX component to create a visual representation
-of the clock, using JWT, or a bitmap-rendering library.
+The implementation is deliberately simple as the requirements are vague about the UX.
+The description of the clock includes the light colours, so it seems necessary to render
+this in some way.
+
+e.g. 11:31:00
+Y
+RR__
+R___
+YYRYYR______
+Y___
+
+# Demo
+
+Run the App.main with a valid time to render the time appropriately
