@@ -1,7 +1,11 @@
 package berlinuhr;
 
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import java.time.DateTimeException;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -40,10 +44,22 @@ public class BerlinUhrTest {
 
     @Test
     public void acceptance() {
-        assertArrayEquals("Acceptance test", new int[]{1,2,0,6,1}, BerlinUhr.fromDigital("10:31:00"));
+        assertArrayEquals("Acceptance test - valid", new int[]{1,2,0,6,1}, BerlinUhr.fromDigital("10:31:00"));
     }
 
 
-    //@Test
-    // reject invalid time format
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void shouldThrowInvalidTime() {
+        expectedException.expect(DateTimeException.class);
+        BerlinUhr.fromDigital("25:00:00");
+    }
+
+    @Test
+    public void shouldThrowBadTimeSyntax() {
+        expectedException.expect(DateTimeException.class);
+        BerlinUhr.fromDigital("foobar");
+    }
 }
