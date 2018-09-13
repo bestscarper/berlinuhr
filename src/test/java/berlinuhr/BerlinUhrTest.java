@@ -14,26 +14,33 @@ public class BerlinUhrTest {
 
     @Test
     public void seconds() {
-        assertArrayEquals("one second", BerlinUhr.fromDigital(  "00:00:01"), new int[]{1,0,0,0,0});
-        assertArrayEquals("two seconds", BerlinUhr.fromDigital(  "00:00:02"), new int[]{0,0,0,0,0});
-        assertArrayEquals("58 seconds edge case", BerlinUhr.fromDigital("00:00:58"), new int[]{1,0,0,0,0});
-        assertArrayEquals("59 seconds edge case", BerlinUhr.fromDigital("00:00:59"), new int[]{0,0,0,0,0});
+        assertArrayEquals("one second", new int[]{0,0,0,0,0}, BerlinUhr.fromDigital(  "00:00:01"));
+        assertArrayEquals("two seconds", new int[]{1,0,0,0,0}, BerlinUhr.fromDigital(  "00:00:02"));
+        assertArrayEquals("58 seconds edge case", new int[]{1,0,0,0,0}, BerlinUhr.fromDigital("00:00:58"));
+        assertArrayEquals("59 seconds edge case", new int[]{0,0,0,0,0}, BerlinUhr.fromDigital("00:00:59"));
     }
 
     @Test
     public void minutes() {
-        assertArrayEquals("one minute", BerlinUhr.fromDigital("00:01:01"), new int[]{0,0,0,0,1});
-        assertArrayEquals("four minutes", BerlinUhr.fromDigital("00:04:01"), new int[]{0,0,0,0,4});
-        assertArrayEquals("five minutes", BerlinUhr.fromDigital("00:05:01"), new int[]{0,0,0,1,0});
-        assertArrayEquals("six minutes", BerlinUhr.fromDigital("00:06:01"), new int[]{0,0,0,1,1});
-        assertArrayEquals("eleven minutes", BerlinUhr.fromDigital("00:11:01"), new int[]{0,0,0,2,1});
-        assertArrayEquals("fifty-nine minutes", BerlinUhr.fromDigital("00:59:01"), new int[]{0,0,0,11,4});
+        assertArrayEquals("one minute", new int[]{0,0,0,0,1}, BerlinUhr.fromDigital("00:01:01"));
+        assertArrayEquals("four minutes", new int[]{0,0,0,0,4}, BerlinUhr.fromDigital("00:04:01"));
+        assertArrayEquals("five minutes", new int[]{0,0,0,1,0}, BerlinUhr.fromDigital("00:05:01"));
+        assertArrayEquals("eleven minutes", new int[]{0,0,0,2,1}, BerlinUhr.fromDigital("00:11:01"));
+        assertArrayEquals("fifty-nine minutes", new int[]{0,0,0,11,4}, BerlinUhr.fromDigital("00:59:01"));
     }
 
-    @Ignore
+    @Test
+    public void hours() {
+        assertArrayEquals("one hour", new int[]{0,0,1,0,0}, BerlinUhr.fromDigital("01:00:01"));
+        assertArrayEquals("four hours", new int[]{0,0,4,0,0}, BerlinUhr.fromDigital("04:00:01"));
+        assertArrayEquals("five hours", new int[]{0,1,0,0,0}, BerlinUhr.fromDigital("05:00:01"));
+        assertArrayEquals("eleven hours", new int[]{0,2,1,0,0}, BerlinUhr.fromDigital("11:00:01"));
+        assertArrayEquals("twenty-three hours", new int[]{0,4,3,0,0}, BerlinUhr.fromDigital("23:00:01"));
+    }
+
     @Test
     public void acceptance() {
-        assertArrayEquals(BerlinUhr.fromDigital("10:31:00"), new int[]{1,2,0,6,1});
+        assertArrayEquals("Acceptance test", new int[]{1,2,0,6,1}, BerlinUhr.fromDigital("10:31:00"));
     }
 
 

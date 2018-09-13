@@ -15,14 +15,16 @@ public class BerlinUhr {
      */
     public static int[] fromDigital(String timeString) {
         LocalTime localTime = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
-        int hour = localTime.get(ChronoField.CLOCK_HOUR_OF_DAY);
+        int hour = localTime.get(ChronoField.HOUR_OF_DAY);
         int minute = localTime.get(ChronoField.MINUTE_OF_HOUR);
         int second = localTime.get(ChronoField.SECOND_OF_MINUTE);
 
         int secondsLight = (second+1) % 2;
+        int minorHoursLight = (hour % 5);
+        int majorHoursLight = (hour / 5);
         int minorMinutesLight = (minute % 5);
         int majorMinutesLight = (minute / 5);
 
-        return new int[]{secondsLight,0,0,majorMinutesLight,minorMinutesLight};
+        return new int[]{secondsLight,majorHoursLight,minorHoursLight,majorMinutesLight,minorMinutesLight};
     }
 }
